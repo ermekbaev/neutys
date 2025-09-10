@@ -1,81 +1,62 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация | Your Site</title>
-    
-    <!-- Подключение шрифта Cygre -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Подключаем стили навбара -->
-    <link rel="stylesheet" href="./components/navbar/navbar.css">
-    
-    <!-- Подключаем стили страницы регистрации -->
-    <link rel="stylesheet" href="./pages/registration/registration.css">
+    <title>SignUp - Neutys</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
-    <!-- Контейнер для навбара (загружается модульно) -->
-    <div id="navbar-container"></div>
-
-    <!-- Основной контент страницы регистрации -->
-    <section class="registration-section">
-        <div class="container-wide">
-            <div class="registration-container corner-borders">
-                <h1 class="registration-title">Create Account</h1>
-                <p class="registration-subtitle">Join us today and start your journey</p>
-                
-                <form class="registration-form" id="registrationForm">
-                    <div class="form-group">
-                        <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-input" placeholder="Create a strong password" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
-                    </div>
-
-                    <button type="submit" class="btn-register">Create Account</button>
-                </form>
-
-                <div class="login-link">
-                    Already have an account? <a href="./pages/login/login.html">Sign in</a>
-                </div>
+    <!-- Main Layout with 308px side margins -->
+    <div class="main-layout">
+        <!-- Navbar Component -->
+        <nav class="navbar">
+            <!-- Logo Block -->
+            <div class="logo-block">
+                <svg class="logo" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logoGradient)"/>
+                    <path d="M12 28V12L20 16L28 12V28L20 24L12 28Z" fill="white"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#667eea"/>
+                            <stop offset="1" stop-color="#764ba2"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-name">Neutys</span>
             </div>
-        </div>
-    </section>
 
-    <!-- Простая инициализация для демо -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ Page loaded successfully');
-            
-            // Простые hover эффекты для навбара
-            const navLinks = document.querySelectorAll('.navbar-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    link.style.transform = 'translateY(-1px)';
-                });
-                
-                link.addEventListener('mouseleave', () => {
-                    link.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script></script>
-    
-    <!-- Подключаем JavaScript страницы регистрации -->
-    <script src="./pages/registration/registration.js"></script>
+            <!-- Navigation Menu -->
+            <div class="nav-menu">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Investors</a>
+                <a href="#" class="nav-item">Partners</a>
+                <a href="#" class="nav-item">Company</a>
+                <a href="#" class="nav-item">Activities</a>
+                <a href="#" class="nav-item">Reviews</a>
+                <a href="#" class="nav-item">News</a>
+                <a href="#" class="nav-item">Academy</a>
+                <a href="#" class="nav-item">FAQ</a>
+                <a href="#" class="nav-item">Contact</a>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="auth-buttons">
+                <button class="btn-login">Log in</button>
+                <button class="btn-signup">Sign Up</button>
+            </div>
+        </nav>
+
+        <!-- Registration Content -->
+        <main class="registration-content">
+            <h1>SignUp</h1>
+            <!-- Registration form will be added here -->
+        </main>
+    </div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/registration.js"></script>
 </body>
 </html>
