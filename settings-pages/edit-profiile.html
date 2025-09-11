@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Edit Profile | Neutys</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__top">
+                <div class="logo">
+                    <img src="images/logo2.svg" alt="Neutys" class="logo__image">
+                </div>
+                
+                <nav class="nav">
+                    <a href="dashboard.html" class="nav__item">
+                        <img src="images/icons/dashboard.svg" alt="Dashboard" class="nav__icon">
+                        Dashboard
+                    </a>
+                    <a href="create-package.html" class="nav__item">
+                        <img src="images/icons/create_package.svg" alt="Create package" class="nav__icon">
+                        Create package
+                    </a>
+                    <a href="packages.html" class="nav__item">
+                        <img src="images/icons/my_packages.svg" alt="My packages" class="nav__icon">
+                        My packages
+                    </a>
+                    <a href="withdrawal.html" class="nav__item">
+                        <img src="images/icons/wthdrawal.svg" alt="Withdrawal" class="nav__icon">
+                        Withdrawal
+                    </a>
+                    <a href="history.html" class="nav__item">
+                        <img src="images/icons/history.svg" alt="History" class="nav__icon">
+                        History
+                    </a>
+                    <a href="team.html" class="nav__item">
+                        <img src="images/icons/my_team.svg" alt="My team" class="nav__icon">
+                        My team
+                    </a>
+                    <a href="edit-profile.html" class="nav__item nav__item--active">
+                        <img src="images/icons/settings_color.svg" alt="Settings" class="nav__icon">
+                        Settings
+                    </a>
+                </nav>
+            </div>
+            
+            <div class="sidebar__bottom">
+                <div class="promo-card">
+                    <img src="images/book.png" alt="" class="promo-card__image">
+                    <button class="promo-card__button">
+                        Upgrade to <strong>PRO</strong> to get<br>access to all features
+                    </button>
+                </div>
+                
+                <button class="logout-btn">
+                    <img src="images/icons/logout.svg" alt="Logout" class="nav__icon">
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="navbar__left">Settings</div>
+                
+                <div class="navbar__right">
+                    <div class="search-bar">
+                        <img src="images/icons/search.svg" alt="Logout" class="nav__icon">    
+                        <input type="text" placeholder="Search" name="search">
+                    </div>
+                    
+                    <div class="language-selector">
+                        <span>EN/USD</span>
+                        <img src="images/icons/down_arrow.svg" alt="down_arrow" class="nav__icon">    
+                    </div>
+                    
+                    <button class="notification-btn">
+                        <img src="images/icons/notification.svg" alt="notification" class="nav__icon">    
+                    </button>
+                    
+                    <div class="user-profile">
+                        <div class="user-profile_info">
+                            <span class="user-profile__name">Roman Design</span>
+                            <span class="user-profile__login">@login1234</span>
+                        </div>
+                        <img src="images/avatar.svg" class="user-profile__avatar"/>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="user-info-block">
+                <img src="images/avatar.svg" alt="User avatar" class="user-info__avatar">
+                <div class="user-info__content">
+                    <h1 class="user-info__title">Roman Design <span>/</span> Edit Profile</h1>
+                    <p class="user-info__subtitle">Update your username and manage your account</p>
+                </div>
+            </div>
+
+            <!-- Content Wrapper -->
+            <div class="content-wrapper">
+                <!-- Tabs Sidebar -->
+                <div class="tabs-sidebar">
+                    <div class="tabs-group">
+                        <a href="edit-profile.html" class="tab-item tab-item--active" data-tab="profile">Edit Profile</a>
+                        <a href="wallets.html" class="tab-item" data-tab="wallets">Wallets</a>
+                        <a href="password.html" class="tab-item" data-tab="password">Password</a>
+                        <a href="2fa.html" class="tab-item" data-tab="2fa">2FA</a>
+                    </div>
+                    <a href="#" class="tab-item tab-item--delete" data-tab="delete">Delete Account</a>
+                </div>
+
+                <!-- Main Section -->
+                <div class="main-section">
+                    <!-- Profile Form Content -->
+                    <div class="tab-content" data-tab="profile" id="content-profile">
+                        <!-- Top Section -->
+                        <div class="top-section">
+                            <!-- Form Block -->
+                            <form class="form-block" data-ajax action="/api/profile/update" method="POST">
+                                <h2 class="section-title">General</h2>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Name</label>
+                                        <input type="text" 
+                                               class="form-input" 
+                                               name="first_name"
+                                               value="Roman" 
+                                               placeholder="Enter your name"
+                                               required
+                                               data-validate="required|minLength:2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Surname</label>
+                                        <input type="text" 
+                                               class="form-input" 
+                                               name="last_name"
+                                               value="Design" 
+                                               placeholder="Enter your surname"
+                                               required
+                                               data-validate="required|minLength:2">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Username</label>
+                                        <input type="text" 
+                                               class="form-input_login" 
+                                               name="username"
+                                               value="design1234" 
+                                               placeholder="Enter your username"
+                                               required
+                                               data-validate="required|minLength:3|pattern:^[a-zA-Z0-9_]+$">
+                                        <span class="form_init">Your invitation code: 
+                                            <span>98asd#$221sv0_232JKS%12</span>
+                                            <img src="images/icons/copy.svg" alt="" class="form_copy-icon" onclick="NeutysApp.copyToClipboard('98asd#$221sv0_232JKS%12')">
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label form-label--required">Email</label>
+                                        <input type="email" 
+                                               class="form-input" 
+                                               name="email"
+                                               value="example@neutys.com" 
+                                               placeholder="Enter your email"
+                                               required
+                                               data-validate="required|email">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <select class="form-select" name="country">
+                                            <option value="germany" selected>🇩🇪 Germany</option>
+                                            <option value="usa">🇺🇸 United States</option>
+                                            <option value="uk">🇬🇧 United Kingdom</option>
+                                            <option value="france">🇫🇷 France</option>
+                                            <option value="spain">🇪🇸 Spain</option>
+                                            <option value="canada">🇨🇦 Canada</option>
+                                            <option value="australia">🇦🇺 Australia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Avatar Block -->
+                            <div class="avatar-block">
+                                <div class="file-upload">
+                                    <img src="images/avatar.svg" alt="" class="avatar-upload" width="140" height="140">
+                                </div>
+                                <button class="avatar-change-btn" type="button" onclick="document.getElementById('avatar-upload').click()">
+                                    Change your avatar...
+                                </button>
+                                <div class="avatar-links">
+                                    <a href="#" id="remove-avatar">Remove my avatar and show my initials instead</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications Block -->
+                        <div class="notifications-block">
+                            <h2 class="section-title">Notifications</h2>
+                            <div class="notifications-list"> 
+                                <div class="notification-item">
+                                    <div>
+                                        <div class="notification-label">All notifications</div>
+                                    </div>
+                                    <button class="toggle toggle--active" data-name="all_notifications" tabindex="0">
+                                        <div class="toggle__slider"></div>
+                                    </button>
+                                </div>
+                                
+                                <div class="notification-item">
+                                    <div>
+                                        <div class="notification-label">Confirmation upon login</div>
+                                    </div>
+                                    <button class="toggle toggle--active" data-name="login_confirmation" tabindex="0">
+                                        <div class="toggle__slider"></div>
+                                    </button>
+                                </div>
+                                
+                                <div class="notification-item">
+                                    <div>
+                                        <div class="notification-label">Login alerts</div>
+                                    </div>
+                                    <button class="toggle" data-name="login_alerts" tabindex="0">
+                                        <div class="toggle__slider"></div>
+                                    </button>
+                                </div>
+                                
+                                <div class="notification-item">
+                                    <div>
+                                        <div class="notification-label">Email notification about logging in</div>
+                                    </div>
+                                    <button class="toggle toggle--active" data-name="email_login_notifications" tabindex="0">
+                                        <div class="toggle__slider"></div>
+                                    </button>
+                                </div>
+                                
+                                <div class="notification-item">
+                                    <div>
+                                        <div class="notification-label">Deposit/Withdraw funds</div>
+                                    </div>
+                                    <button class="toggle" data-name="financial_notifications" tabindex="0">
+                                        <div class="toggle__slider"></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <button class="save-btn btn--primary" type="submit" form="profile-form">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay"></div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/forms.js"></script>
+
+    <!-- Page-specific initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom initialization for this page
+            console.log('Edit Profile page loaded');
+            
+            // Handle avatar removal
+            document.getElementById('remove-avatar').addEventListener('click', function(e) {
+                e.preventDefault();
+                const avatar = document.querySelector('.avatar-upload');
+                avatar.style.backgroundImage = '';
+                avatar.style.background = 'linear-gradient(135deg, #667EEA 0%, #764BA2 100%)';
+                NeutysApp.showToast('Avatar removed', 'info');
+            });
+            
+            // Handle show initials
+            document.getElementById('show-initials').addEventListener('click', function(e) {
+                e.preventDefault();
+                const avatar = document.querySelector('.avatar-upload');
+                avatar.style.backgroundImage = '';
+                avatar.style.background = 'var(--primary-color)';
+                avatar.innerHTML = '<div style="color: white; font-size: 24px; font-weight: 600; display: flex; align-items: center; justify-content: center; height: 100%;">RD</div>';
+                NeutysApp.showToast('Showing initials', 'info');
+            });
+            
+            // Listen for form events
+            document.addEventListener('formSuccess', function(e) {
+                console.log('Form submitted successfully:', e.detail);
+            });
+            
+            document.addEventListener('formError', function(e) {
+                console.error('Form submission error:', e.detail);
+            });
+            
+            // Listen for toggle changes
+            document.addEventListener('toggleChange', function(e) {
+                console.log('Toggle changed:', e.detail.name, e.detail.active);
+            });
+            
+            // Listen for file selection
+            document.addEventListener('fileSelected', function(e) {
+                console.log('File selected:', e.detail.file.name);
+            });
+        });
+    </script>
+</body>
+</html>

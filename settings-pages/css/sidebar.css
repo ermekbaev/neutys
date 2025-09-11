@@ -1,0 +1,221 @@
+/* Sidebar styles */
+
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-right: 1px solid var(--border-color);
+  position: relative;
+  z-index: var(--z-sticky);
+  align-items: flex-start;
+}
+
+/* Sidebar sections */
+.sidebar__top {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-3xl);
+  padding-left: var(--spacing-sm);
+}
+
+.logo__icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.logo__text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.nav__item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav__item--active {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+
+.nav__item--active::after {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-color);
+  border-radius: 25px 0 0 25px;
+}
+
+.nav__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #a3aed0;
+  font-size: var(--font-size-lg);
+}
+
+/* Promo card */
+.promo-card {
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.promo-card__image {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--spacing-2xl);
+  backdrop-filter: blur(10px);
+}
+
+.promo-card__button {
+  background: linear-gradient(160deg, #868cff 0%, #4318ff 100%);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 30px 30px; /* уменьшенные отступы */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 118px;
+
+  /* display: flex; */
+  align-items: center;
+  /* justify-content: center; */
+
+  text-align: center;
+}
+
+/* .promo-card__button:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+} */
+
+/* Logout button */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  width: 100%;
+  text-align: left;
+}
+
+/* .logout-btn:hover {
+  background-color: var(--bg-error);
+  color: var(--error-color);
+} */
+
+.logout-btn:focus {
+  outline: 2px solid var(--error-color);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    z-index: var(--z-modal);
+    transition: left var(--transition-normal);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar--open {
+    left: 0;
+  }
+}
