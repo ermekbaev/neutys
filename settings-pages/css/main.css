@@ -156,7 +156,7 @@
 }
 
 .notifications-block .section-title {
-  padding-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
 }
 
 .notifications-list {

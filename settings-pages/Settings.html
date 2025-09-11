@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Edit Profile | Neutys</title>
+    <title>Settings | Neutys</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/forms.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/wallets.css">
 </head>
 <body>
     <div class="container">
@@ -54,7 +55,7 @@
                         <img src="images/icons/my_team.svg" alt="My team" class="nav__icon">
                         My team
                     </a>
-                    <a href="edit-profile.html" class="nav__item nav__item--active">
+                    <a href="settings.html" class="nav__item nav__item--active">
                         <img src="images/icons/settings_color.svg" alt="Settings" class="nav__icon">
                         Settings
                     </a>
@@ -78,8 +79,6 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Mobile Menu Toggle -->
-            
             <!-- Navbar -->
             <nav class="navbar">
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -89,12 +88,12 @@
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
-                
+
                 <div class="navbar__left">Settings</div>
                 
                 <div class="navbar__right">
                     <div class="search-bar">
-                        <img src="images/icons/search.svg" alt="Logout" class="nav__icon">    
+                        <img src="images/icons/search.svg" alt="Search" class="nav__icon">    
                         <input type="text" placeholder="Search" name="search">
                     </div>
                     
@@ -108,7 +107,7 @@
                     </button>
                     
                     <div class="user-profile">
-                        <div class="user-profile_info">
+                        <div class="user-profile__info">
                             <span class="user-profile__name">Roman Design</span>
                             <span class="user-profile__login">@login1234</span>
                         </div>
@@ -120,8 +119,8 @@
             <div class="user-info-block">
                 <img src="images/avatar.svg" alt="User avatar" class="user-info__avatar">
                 <div class="user-info__content">
-                    <h1 class="user-info__title">Roman Design <span>/</span> Edit Profile</h1>
-                    <p class="user-info__subtitle">Update your username and manage your account</p>
+                    <h1 class="user-info__title">Roman Design <span>/</span> Settings</h1>
+                    <p class="user-info__subtitle">Manage your account settings</p>
                 </div>
             </div>
 
@@ -130,17 +129,17 @@
                 <!-- Tabs Sidebar -->
                 <div class="tabs-sidebar">
                     <div class="tabs-group">
-                        <a href="edit-profile.html" class="tab-item tab-item--active" data-tab="profile">Edit Profile</a>
-                        <a href="wallets.html" class="tab-item" data-tab="wallets">Wallets</a>
-                        <a href="password.html" class="tab-item" data-tab="password">Password</a>
-                        <a href="2fa.html" class="tab-item" data-tab="2fa">2FA</a>
+                        <a href="#profile" class="tab-item tab-item--active" data-tab="profile">Profile</a>
+                        <a href="#wallets" class="tab-item" data-tab="wallets">Wallets</a>
+                        <a href="#password" class="tab-item" data-tab="password">Password</a>
+                        <a href="#2fa" class="tab-item" data-tab="2fa">2FA</a>
                     </div>
-                    <a href="#" class="tab-item tab-item--delete" data-tab="delete">Delete Account</a>
+                    <a href="#delete" class="tab-item tab-item--delete" data-tab="delete">Delete Account</a>
                 </div>
 
                 <!-- Main Section -->
                 <div class="main-section">
-                    <!-- Profile Form Content -->
+                    <!-- Profile Content -->
                     <div class="tab-content" data-tab="profile" id="content-profile">
                         <!-- Top Section -->
                         <div class="top-section">
@@ -284,6 +283,187 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Wallets Content -->
+                    <div class="tab-content" data-tab="wallets" id="content-wallets" style="display: none;">
+                        <!-- Wallets Form Content -->
+                        <div class="form-block">
+                            <h2 class="section-title">Add wallet</h2>
+                            
+                            <!-- Add Wallet Form -->
+                            <form id="wallet-form" class="wallet-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Payment system</label>
+                                        <select class="form-select" name="payment_system" required>
+                                            <option value="">Select payment system</option>
+                                            <option value="toncoin">Toncoin TON</option>
+                                            <option value="ethereum">Ethereum ETH</option>
+                                            <option value="bitcoin">Bitcoin BTC</option>
+                                            <option value="usdt">Tether USDT</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Address</label>
+                                        <div class="input-with-copy">
+                                            <input type="text" 
+                                                   class="form-input" 
+                                                   name="wallet_address" 
+                                                   placeholder="Enter wallet address"
+                                                   required>
+                                            <button type="button" class="copy-btn" title="Copy address">
+                                                <img src="images/icons/copy.svg" alt="Copy">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Your TAG</label>
+                                        <div class="input-with-icon">
+                                            <input type="text" 
+                                                   class="form-input" 
+                                                   name="wallet_tag" 
+                                                   placeholder="Enter the TAG">
+                                            <button type="button" class="toggle-visibility" title="Show/Hide">
+                                                <img src="images/icons/eye.svg" alt="Show">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Two-factor authentication</label>
+                                        <div class="input-with-icon">
+                                            <input type="text" 
+                                                   class="form-input" 
+                                                   name="two_factor_code" 
+                                                   placeholder="Enter the code">
+                                            <button type="button" class="toggle-visibility" title="Show/Hide">
+                                                <img src="images/icons/eye.svg" alt="Show">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary">Add wallet</button>
+                            </form>
+                        </div>
+
+                        <!-- Your Wallets Section -->
+                        <div class="wallets-list-block">
+                            <h2 class="section-title">Your wallets</h2>
+                            
+                            <!-- Wallets Table -->
+                            <div class="wallets-table">
+                                <div class="table-header">
+                                    <div class="table-col1">Type</div>
+                                    <div class="table-col1">Address</div>
+                                    <div class="table-col1">Date</div>
+                                    <div class="table-col1">Actions</div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div class="table-col">
+                                        <div class="wallet-type">
+                                            <img src="images/tether.svg" alt="T" class="wallet-icon wallet-icon--tether">
+                                            <span>Tether TRC20</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-address">1FmkbHfnpaZjKFvHokTJTjLueN455paH</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-date">04.08.2026</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <div class="table-actions">
+                                            <button class="action-btn action-btn--edit" title="Edit">
+                                                <img src="images/icons/edit.svg" alt="Edit">
+                                            </button>
+                                            <button class="action-btn action-btn--delete" title="Delete">
+                                                <img src="images/icons/delete.svg" alt="Delete">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div class="table-col">
+                                        <div class="wallet-type">
+                                            <img src="images/tether.svg" alt="T" class="wallet-icon wallet-icon--tether">
+                                            <span>Tether TRC20</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-address">1FmkbHfnpaZjKFvHokTJTjLueN455paH</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-date">04.08.2025</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <div class="table-actions">
+                                            <button class="action-btn action-btn--edit" title="Edit">
+                                                <img src="images/icons/edit.svg" alt="Edit">
+                                            </button>
+                                            <button class="action-btn action-btn--delete" title="Delete">
+                                                <img src="images/icons/delete.svg" alt="Delete">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div class="table-col">
+                                        <div class="wallet-type">
+                                            <img src="images/tether.svg" alt="T" class="wallet-icon wallet-icon--tether">
+                                            <span>Tether TRC20</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-address">1FmkbHfnpaZjKFvHokTJTjLueN455paH</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-date">04.08.2025</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <div class="table-actions">
+                                            <button class="action-btn action-btn--edit" title="Edit">
+                                                <img src="images/icons/edit.svg" alt="Edit">
+                                            </button>
+                                            <button class="action-btn action-btn--delete" title="Delete">
+                                                <img src="images/icons/delete.svg" alt="Delete">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-row">
+                                    <div class="table-col">
+                                        <div class="wallet-type">
+                                            <img src="images/tether.svg" alt="T" class="wallet-icon wallet-icon--tether">
+                                            <span>Tether TRC20</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-address">1FmkbHfnpaZjKFvHokTJTjLueN455paH</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <span class="wallet-date">04.08.2025</span>
+                                    </div>
+                                    <div class="table-col">
+                                        <div class="table-actions">
+                                            <button class="action-btn action-btn--edit" title="Edit">
+                                                <img src="images/icons/edit.svg" alt="Edit">
+                                            </button>
+                                            <button class="action-btn action-btn--delete" title="Delete">
+                                                <img src="images/icons/delete.svg" alt="Delete">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -302,7 +482,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Custom initialization for this page
-            console.log('Edit Profile page loaded');
+            console.log('Settings page loaded');
             
             // Handle avatar removal
             document.getElementById('remove-avatar').addEventListener('click', function(e) {
@@ -311,16 +491,6 @@
                 avatar.style.backgroundImage = '';
                 avatar.style.background = 'linear-gradient(135deg, #667EEA 0%, #764BA2 100%)';
                 NeutysApp.showToast('Avatar removed', 'info');
-            });
-            
-            // Handle show initials
-            document.getElementById('show-initials').addEventListener('click', function(e) {
-                e.preventDefault();
-                const avatar = document.querySelector('.avatar-upload');
-                avatar.style.backgroundImage = '';
-                avatar.style.background = 'var(--primary-color)';
-                avatar.innerHTML = '<div style="color: white; font-size: 24px; font-weight: 600; display: flex; align-items: center; justify-content: center; height: 100%;">RD</div>';
-                NeutysApp.showToast('Showing initials', 'info');
             });
             
             // Listen for form events
