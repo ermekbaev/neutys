@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Neutys</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    
+    <!-- Login specific styles -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- Background layer: color + SVG objects -->
+    <div class="bg-objects"></div>
+
+    <!-- Main container -->
+    <div class="login-container">
+        
+        <!-- 1. Navigation Bar -->
+        <nav class="navbar">
+            
+            <!-- Left: Logo -->
+            <div class="navbar__left">
+                <img src="images/logo1.svg" alt=""  class="logo">
+            </div>
+            
+            <!-- Center: Navigation Menu -->
+            <div class="navbar__center">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Investors</a>
+                <a href="#" class="nav-link">Partners</a>
+                <a href="#" class="nav-link">Company activities</a>
+                <a href="#" class="nav-link">Reviews</a>
+                <a href="#" class="nav-link">News</a>
+                <a href="#" class="nav-link">Academy</a>
+                <a href="#" class="nav-link">FAQ</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            
+            <!-- Right: Buttons -->
+            <div class="navbar__right">
+                <button class="btn-login">Log In</button>
+                <button class="btn-signup">Sign Up</button>
+            </div>
+        </nav>
+
+        <!-- 2. Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Left Block: Graphics/Charts -->
+            <div class="graphics-block">
+                <!-- Графические элементы будут добавлены здесь -->
+                <div class="graphics-container">
+                    <!-- Chart/Dashboard elements -->
+                    <div class="chart-element chart-element--main">
+                        <!-- Основной круговой элемент с процентами -->
+                    </div>
+                    
+                    <div class="chart-element chart-element--usd-btc">
+                        <!-- USD/BTC элемент -->
+                    </div>
+                    
+                    <div class="chart-element chart-element--bar-chart">
+                        <!-- Столбчатая диаграмма -->
+                    </div>
+                    
+                    <div class="chart-element chart-element--line-chart">
+                        <!-- Линейный график -->
+                    </div>
+                    
+                    <!-- Декоративные точки/элементы -->
+                    <div class="decorative-dots">
+                        <div class="dot dot--1"></div>
+                        <div class="dot dot--2"></div>
+                        <div class="dot dot--3"></div>
+                        <div class="dot dot--4"></div>
+                        <div class="dot dot--5"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Block: Login Form -->
+            <div class="login-block">
+                <div class="login-form-container">
+                    
+                    <!-- Login Header -->
+                    <div class="login-header">
+                        <h1 class="login-title">Welcome Back</h1>
+                        <p class="login-subtitle">Please login your account</p>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form class="login-form">
+                        
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="admin@gmail.com"
+                                required
+                            >
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                        </div>
+
+                        <!-- Verification Field -->
+                        <div class="form-group">
+                            <label class="form-label" for="verification">Verification</label>
+                            <div class="verification-input">
+                                <input 
+                                    type="text" 
+                                    id="verification" 
+                                    name="verification" 
+                                    class="form-input verification-code" 
+                                    placeholder="Enter this text"
+                                    required
+                                >
+                                <div class="captcha-code">ASK12%</div>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+
+                        <!-- Sign In Button -->
+                        <button type="submit" class="signin-btn">
+                            Sign In
+                        </button>
+                        
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="social-login">
+                        <button class="google-btn">
+                            <svg class="google-icon" viewBox="0 0 24 24">
+                                <!-- Google icon будет добавлен -->
+                            </svg>
+                            Continue with Google
+                        </button>
+                    </div>
+
+                    <!-- Sign Up Link -->
+                    <div class="signup-link">
+                        Didn't have an Account? <a href="#signup">Sign-up</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- 3. Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="copyright">© 2025 Neutys. All Rights Reserved.</span>
+                </div>
+                <div class="footer-right">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Careers</a>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+
+</body>
+    
+    <!-- JavaScript -->
+    <script src="js/login.js"></script>
+</body>
+</html>
