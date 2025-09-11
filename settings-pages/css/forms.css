@@ -103,16 +103,27 @@
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-sm);
   padding-top: 8px;
+  word-break: break-all; /* Принудительный перенос длинных строк */
+  overflow-wrap: break-word; /* Переносим слова при необходимости */
+  max-width: 100%; /* Ограничиваем максимальную ширину */
+  display: block; /* Делаем блочным элементом */
 }
 
 .form_init span {
   color: var(--text-primary);
   font-weight: var(--font-weight-normal);
+
+  word-break: break-all; /* Код будет переноситься по символам */
+  display: inline-block; /* Позволяет переносы */
+  max-width: 100%;
 }
 
 .form_init img {
   text-align: center;
   padding-left: 7px;
+
+  flex-shrink: 0; /* Иконка не сжимается */
+  vertical-align: middle; /* Выравнивание по центру */
 }
 
 /* Input states */
@@ -238,7 +249,7 @@
   left: 5px;
   width: 13px;
   height: 13px;
-  background: white;
+  background: var(--primary-color);
   border-radius: 50%;
   transition: transform var(--transition-normal);
   box-shadow: var(--shadow-sm);
@@ -246,6 +257,7 @@
 
 .toggle--active .toggle__slider {
   transform: translateX(20px);
+  background: white;
 }
 
 .toggle:disabled {
