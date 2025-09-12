@@ -225,11 +225,12 @@
                         <div class="form-group">
                             <label class="form-label" for="verification">Verification</label>
                             <div class="verification-input">
+                                <button class="input-button" onclick="handleButtonClick()">ASK12%</button>
                                 <input 
                                     type="text" 
                                     id="verification" 
                                     name="verification" 
-                                    class="form-input verification-code" 
+                                    class="verification-code" 
                                     placeholder="Enter this text"
                                     required
                                 >
@@ -245,8 +246,10 @@
                     </form>
 
                     <!-- Divider -->
-                    <div class="divider">
-                        <span>OR</span>
+                    <div class="or-divider">
+                        <div class="line"></div>
+                        <div class="or-text">OR</div>
+                        <div class="line"></div>
                     </div>
 
                     <!-- Social Login -->
