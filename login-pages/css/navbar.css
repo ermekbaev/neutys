@@ -1,35 +1,37 @@
 /* ==================================================
-   NAVBAR COMPONENT - Полностью адаптивный навбар
+   NAVBAR COMPONENT - ОЧИЩЕННАЯ ВЕРСИЯ
    ================================================== */
 
 /* ===== БАЗОВЫЕ СТИЛИ НАВБАРА ===== */
 .navbar {
+  position: relative;
+  margin: 15px auto 0 auto;
+  width: 80%;
+  z-index: 100;
+}
+
+.navbar-content {
   display: flex;
   align-items: center;
-  margin: 15px auto 0 auto;
   justify-content: space-between;
-  position: relative;
-
-  /* Градиент навбара */
   background: linear-gradient(
     135deg,
     rgba(61, 115, 235, 0.3),
     rgba(222, 143, 255, 0.3)
   );
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 12px 32px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 80%;
-
-  /* Прямые углы без border-radius */
   border-radius: 0;
+  position: relative;
 }
 
 /* ===== УГЛОВЫЕ ЭЛЕМЕНТЫ НАВБАРА ===== */
 
 /* Верхние углы */
-.navbar::before,
-.navbar::after {
+.navbar-content::before,
+.navbar-content::after {
   content: "";
   position: absolute;
   width: 15px;
@@ -39,110 +41,102 @@
   pointer-events: none;
 }
 
-/* Левый верхний угол */
-.navbar::before {
+.navbar-content::before {
   top: -2px;
   left: -2px;
   border-right: none;
   border-bottom: none;
 }
 
-/* Правый верхний угол */
-.navbar::after {
+.navbar-content::after {
   top: -2px;
   right: -2px;
   border-left: none;
   border-bottom: none;
 }
 
-/* Нижние углы через дочерние элементы */
-.navbar .navbar__left::before {
-  content: "";
+/* Нижние углы */
+.navbar-corner {
   position: absolute;
   width: 15px;
   height: 15px;
   border: 2px solid #000000;
-  border-right: none;
-  border-top: none;
-  bottom: -14px;
-  left: -34px;
   z-index: 2;
   pointer-events: none;
 }
 
-.navbar .navbar__right::after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #000000;
+.navbar-corner--bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+}
+
+.navbar-corner--bottom-right {
+  bottom: -2px;
+  right: -2px;
   border-left: none;
   border-top: none;
-  bottom: -14px;
-  right: -34px;
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* ===== СТРУКТУРА НАВБАРА ===== */
-
-/* Левая секция */
 .navbar__left {
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
-/* Центральная секция */
 .navbar__center {
   display: flex;
   gap: 32px;
   align-items: center;
 }
 
-/* Правая секция */
 .navbar__right {
   display: flex;
   gap: 12px;
   align-items: center;
-  position: relative;
-  flex-wrap: wrap; /* для адаптивности кнопок */
 }
 
 /* ===== ЛОГОТИП ===== */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo-icon {
-  width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
 }
 
-.logo-text {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1f2937;
+.logo--desktop {
+  display: block;
 }
 
-/* ===== НАВИГАЦИОННЫЕ ССЫЛКИ ===== */
+.logo--mobile {
+  display: none;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.navbar__left::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  background-image: url("images/logo2.svg");
+  pointer-events: none;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
 .nav-link {
   color: #6b7280;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   transition: color 0.2s ease;
-  position: relative;
+  white-space: nowrap;
 }
 
 .nav-link--active {
@@ -154,21 +148,29 @@
   color: #1f2937;
 }
 
-/* ===== КНОПКИ НАВБАРА ===== */
-
-/* Кнопка Login */
-.btn-login {
-  background: transparent;
-  border: 1px solid #e5e7eb;
-  color: #6b7280;
+/* ===== КНОПКИ ===== */
+.btn-login,
+.btn-signup {
   padding: 8px 16px;
-  border-radius: 0;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-  min-width: fit-content;
+  border-radius: 0;
+  white-space: nowrap;
+  width: 90px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+}
+
+.btn-login {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
 }
 
 .btn-login:hover {
@@ -176,19 +178,11 @@
   color: #1f2937;
 }
 
-/* Кнопка Signup */
 .btn-signup {
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border: none;
   color: white;
-  padding: 8px 16px;
-  border-radius: 0;
-  font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-  min-width: fit-content;
 }
 
 .btn-signup:hover {
@@ -212,7 +206,6 @@
   pointer-events: none;
 }
 
-/* Левые верхние углы */
 .btn-login::before,
 .btn-signup::before {
   top: -1px;
@@ -221,7 +214,6 @@
   border-bottom: none;
 }
 
-/* Правые верхние углы */
 .btn-login::after,
 .btn-signup::after {
   top: -1px;
@@ -230,7 +222,7 @@
   border-bottom: none;
 }
 
-/* Wrapper'ы для нижних углов кнопок */
+/* Нижние углы кнопок */
 .btn-login-corners,
 .btn-signup-corners {
   position: relative;
@@ -250,7 +242,6 @@
   pointer-events: none;
 }
 
-/* Левые нижние углы */
 .btn-login-corners::before,
 .btn-signup-corners::before {
   bottom: -1px;
@@ -259,7 +250,6 @@
   border-top: none;
 }
 
-/* Правые нижние углы */
 .btn-login-corners::after,
 .btn-signup-corners::after {
   bottom: -1px;
@@ -268,24 +258,7 @@
   border-top: none;
 }
 
-/* ===== HOVER ЭФФЕКТЫ ===== */
-.btn-login:hover::before,
-.btn-login:hover::after,
-.btn-signup:hover::before,
-.btn-signup:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-.btn-login-corners:hover::before,
-.btn-login-corners:hover::after,
-.btn-signup-corners:hover::before,
-.btn-signup-corners:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-/* ===== MOBILE MENU TOGGLE ===== */
+/* ===== МОБИЛЬНАЯ КНОПКА ===== */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -308,7 +281,7 @@
   stroke: currentColor;
 }
 
-/* Углы для мобильной кнопки */
+/* Верхние углы мобильной кнопки */
 .mobile-menu-toggle::before,
 .mobile-menu-toggle::after {
   content: "";
@@ -334,11 +307,42 @@
   border-bottom: none;
 }
 
+/* Нижние углы мобильной кнопки */
+.mobile-menu-toggle-corners {
+  position: relative;
+  display: none;
+}
+
+.mobile-menu-toggle-corners::before,
+.mobile-menu-toggle-corners::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #000000;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.mobile-menu-toggle-corners::before {
+  bottom: -1px;
+  left: -1px;
+  border-right: none;
+  border-top: none;
+}
+
+.mobile-menu-toggle-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
 /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
   background: linear-gradient(
@@ -347,20 +351,26 @@
     rgba(222, 143, 255, 0.95)
   );
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 8px;
   padding: 16px;
-  z-index: 10;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .mobile-menu.mobile-menu--open {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 0;
   margin-bottom: 16px;
 }
 
@@ -368,10 +378,17 @@
   display: block;
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .mobile-menu .nav-link:last-child {
   border-bottom: none;
+}
+
+.mobile-menu .nav-link:hover {
+  color: #ffffff;
+  opacity: 0.8;
 }
 
 .mobile-auth-buttons {
@@ -390,16 +407,40 @@
   width: 100%;
   justify-content: center;
   text-align: center;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-
-/* Этап 1: Уменьшение отступов (1745px - 1200px) */
-@media (max-width: 1745px) {
-  .navbar {
-    width: 85%;
-  }
+/* ===== СОСТОЯНИЯ ===== */
+.navbar.menu-open .mobile-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
+
+.navbar.menu-open .mobile-menu-toggle {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Анимация гамбургера */
+.mobile-menu-toggle.active svg line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle.active svg line:nth-child(2) {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-toggle.active svg line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+  transition: transform 0.3s ease;
+}
+
+/* ===== АДАПТИВНЫЕ БРЕЙКПОИНТЫ ===== */
 
 @media (max-width: 1600px) {
   .navbar {
@@ -407,63 +448,77 @@
   }
 }
 
-@media (max-width: 1410px) {
+@media (max-width: 1400px) {
   .navbar {
-    width: 95%;
-    padding: 12px 24px;
+    width: 90%;
   }
-
   .navbar__center {
     gap: 20px;
   }
-
-  .btn-login,
-  .btn-signup {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
 }
 
-/* Этап 2: Кнопки в две строки (1200px - 900px) */
 @media (max-width: 1200px) {
   .navbar {
-    width: 98%;
-    padding: 12px 20px;
-    /* Увеличиваем высоту для размещения кнопок в две строки */
-    min-height: 60px;
+    width: 100%;
   }
-
+  .navbar-content {
+    padding: 12px 12px;
+  }
   .navbar__center {
-    gap: 16px;
+    gap: 14px;
   }
-
   .navbar__right {
     flex-direction: column;
     align-items: flex-end;
     gap: 6px;
-    /* Позиционируем кнопки друг под другом */
+  }
+  .btn-login,
+  .btn-signup {
+    padding: 6px 12px;
+    font-size: 13px;
+    width: 80px;
+    min-width: 60px;
+  }
+}
+
+/* КЛЮЧЕВОЙ БРЕЙКПОИНТ: 1000px - смена логотипа + кнопки в колонку */
+@media (max-width: 1000px) {
+  .navbar {
+    width: 98%;
+  }
+  .navbar-content {
+    padding: 12px 20px;
+    min-height: 60px;
+  }
+  .navbar__center {
+    gap: 16px;
   }
 
-  /* Адаптация углов навбара */
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
+  /* КНОПКИ В КОЛОНКУ */
+  .navbar__right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  /* СМЕНА ЛОГОТИПА */
+  .logo--desktop {
+    display: none;
+  }
+  .logo--mobile {
+    display: block;
+    animation: logoFadeIn 0.5s ease;
+    height: 32px;
+    max-width: 140px;
+  }
+
+  /* Уменьшение углов */
+  .navbar-content::before,
+  .navbar-content::after,
+  .navbar-corner {
     width: 12px;
     height: 12px;
   }
-
-  .navbar .navbar__left::before {
-    bottom: -12px;
-    left: -32px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -12px;
-    right: -32px;
-  }
-
-  /* Адаптация углов кнопок */
   .btn-login::before,
   .btn-login::after,
   .btn-signup::before,
@@ -475,179 +530,180 @@
     width: 6px;
     height: 6px;
   }
-
   .btn-login,
   .btn-signup {
-    padding: 5px 10px;
+    padding: 5px 8px;
     font-size: 12px;
-    width: auto;
-    min-width: 60px;
+    width: 65px;
+    min-width: 55px;
   }
 }
 
-/* Этап 3: Скрытие части меню (900px - 600px) */
-@media (max-width: 900px) {
-  .navbar__center {
-    gap: 12px;
-  }
-
-  /* Скрываем менее важные ссылки */
-  .nav-link:nth-child(n + 6) {
-    display: none;
-  }
-}
-
-/* Этап 4: Полное мобильное меню (600px и меньше) */
-@media (max-width: 600px) {
-  .navbar {
-    flex-wrap: nowrap;
-    align-items: center;
-    height: auto;
+/* МОБИЛЬНОЕ МЕНЮ: 950px */
+@media (max-width: 950px) {
+  .navbar-content {
+    padding: 12px 16px;
     min-height: 50px;
   }
 
-  /* Скрываем центральное меню полностью */
+  /* Скрываем меню и кнопки */
   .navbar__center {
-    display: none;
+    display: none !important;
+  }
+  .navbar__right .btn-login-corners,
+  .navbar__right .btn-signup-corners {
+    display: none !important;
   }
 
-  /* Возвращаем кнопки в строку но скрываем */
-  .navbar__right {
-    display: none;
+  /* Показываем бургер */
+  .mobile-menu-toggle-corners {
+    display: block !important;
   }
-
-  /* Показываем мобильное меню */
   .mobile-menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
   }
 
-  /* Адаптация углов навбара */
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
+  /* Углы */
+  .navbar-content::before,
+  .navbar-content::after,
+  .navbar-corner {
     width: 10px;
     height: 10px;
   }
+}
 
-  .navbar .navbar__left::before {
-    bottom: -11px;
-    left: -26px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -11px;
-    right: -26px;
+@media (max-width: 700px) {
+  .logo--mobile {
+    height: 28px;
+    max-width: 120px;
   }
 }
 
-/* Этап 5: Мини-мобильная версия (480px и меньше) */
+@media (max-width: 600px) {
+  .navbar-content {
+    padding: 10px 14px;
+  }
+}
+
 @media (max-width: 480px) {
   .navbar {
     width: 98%;
-    padding: 10px 16px;
   }
-
-  .logo-text {
-    font-size: 18px;
+  .logo--mobile {
+    height: 26px;
+    max-width: 100px;
   }
-
-  /* Минимальные углы навбара */
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
+  .navbar-content::before,
+  .navbar-content::after,
+  .navbar-corner {
     width: 8px;
     height: 8px;
     border-width: 1px;
   }
-
-  .navbar .navbar__left::before {
-    bottom: -9px;
-    left: -22px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -9px;
-    right: -22px;
-  }
-
-  /* Углы мобильной кнопки */
   .mobile-menu-toggle::before,
-  .mobile-menu-toggle::after {
+  .mobile-menu-toggle::after,
+  .mobile-menu-toggle-corners::before,
+  .mobile-menu-toggle-corners::after {
     width: 4px;
     height: 4px;
   }
-
-  /* Углы кнопок в мобильном меню */
-  .mobile-auth-buttons .btn-login::before,
-  .mobile-auth-buttons .btn-login::after,
-  .mobile-auth-buttons .btn-signup::before,
-  .mobile-auth-buttons .btn-signup::after,
-  .mobile-auth-buttons .btn-login-corners::before,
-  .mobile-auth-buttons .btn-login-corners::after,
-  .mobile-auth-buttons .btn-signup-corners::before,
-  .mobile-auth-buttons .btn-signup-corners::after {
-    width: 4px;
-    height: 4px;
-    border-width: 1px;
+  .mobile-auth-buttons .btn-login,
+  .mobile-auth-buttons .btn-signup {
+    font-size: 14px;
+    padding: 12px 16px;
+    min-height: 40px;
   }
 }
 
-/* Этап 6: Супер мини (360px и меньше) */
 @media (max-width: 360px) {
-  .navbar {
+  .navbar-content {
     padding: 8px 12px;
   }
-
-  .logo-text {
-    font-size: 16px;
-  }
-
   .mobile-menu {
     padding: 12px;
   }
-
-  /* Супер минимальные углы */
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after,
+  .logo--mobile {
+    height: 22px;
+    max-width: 80px;
+  }
+  .navbar-content::before,
+  .navbar-content::after,
+  .navbar-corner,
   .mobile-menu-toggle::before,
-  .mobile-menu-toggle::after {
+  .mobile-menu-toggle::after,
+  .mobile-menu-toggle-corners::before,
+  .mobile-menu-toggle-corners::after {
     width: 3px;
     height: 3px;
     border-width: 1px;
   }
+  .mobile-auth-buttons .btn-login,
+  .mobile-auth-buttons .btn-signup {
+    font-size: 13px;
+    padding: 10px 14px;
+    min-height: 36px;
+  }
 }
 
-/* ===== JavaScript Toggle States ===== */
-.navbar.menu-open .mobile-menu {
-  display: block;
+/* ===== ЭФФЕКТЫ ===== */
+.btn-login:hover::before,
+.btn-login:hover::after,
+.btn-signup:hover::before,
+.btn-signup:hover::after,
+.btn-login-corners:hover::before,
+.btn-login-corners:hover::after,
+.btn-signup-corners:hover::before,
+.btn-signup-corners:hover::after {
+  border-color: #333333;
 }
 
-.navbar.menu-open .mobile-menu-toggle {
-  background: rgba(255, 255, 255, 0.3);
+.mobile-menu-toggle:focus,
+.nav-link:focus,
+.btn-login:focus,
+.btn-signup:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
 }
 
-/* Анимации */
-.mobile-menu {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+@media (hover: none) and (pointer: coarse) {
+  .btn-login:hover,
+  .btn-signup:hover,
+  .mobile-menu-toggle:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .logo:hover {
+    transform: none;
+    filter: none;
+  }
+  .btn-login:active {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .btn-signup:active {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  }
 }
 
-.mobile-menu.mobile-menu--open {
-  opacity: 1;
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .logo--desktop,
+  .logo--mobile {
+    transition: none;
+  }
+  .logo:hover {
+    transform: none;
+    filter: none;
+  }
+  @keyframes logoFadeIn {
+    from,
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
-.mobile-menu-toggle {
-  transition: all 0.2s ease;
-}
-
-.mobile-menu-toggle:hover {
-  transform: scale(1.05);
+@media print {
+  .navbar {
+    display: none !important;
+  }
 }
