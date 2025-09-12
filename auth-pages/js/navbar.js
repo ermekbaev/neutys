@@ -1,10 +1,6 @@
-// navbar.js - Отдельный файл для навбара
-// Можно использовать на всех страницах сайта
-
 (function () {
   "use strict";
 
-  // Современный навбар - JavaScript функциональность
   class ModernNavbar {
     constructor() {
       this.navbar = document.querySelector(".navbar");
@@ -29,39 +25,33 @@
     }
 
     setupEventListeners() {
-      // Мобильное меню toggle
       this.mobileToggle.addEventListener("click", (e) => {
         e.preventDefault();
         this.toggleMobileMenu();
       });
 
-      // Закрытие по клику вне меню
       document.addEventListener("click", (e) => {
         if (this.isMenuOpen && !this.navbar.contains(e.target)) {
           this.closeMobileMenu();
         }
       });
 
-      // Закрытие по Escape
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && this.isMenuOpen) {
           this.closeMobileMenu();
         }
       });
 
-      // Закрытие при изменении размера окна
       window.addEventListener("resize", () => {
         this.handleResize();
       });
 
-      // Закрытие меню при клике по ссылкам в мобильном меню
       this.mobileMenu.querySelectorAll(".nav-link").forEach((link) => {
         link.addEventListener("click", () => {
           this.closeMobileMenu();
         });
       });
 
-      // Закрытие меню при клике по кнопкам в мобильном меню
       this.mobileMenu.querySelectorAll(".btn").forEach((button) => {
         button.addEventListener("click", () => {
           this.closeMobileMenu();
@@ -70,7 +60,6 @@
     }
 
     setupAccessibility() {
-      // Управление фокусом в мобильном меню
       const focusableElements = this.mobileMenu.querySelectorAll(
         'a, button, [tabindex]:not([tabindex="-1"])'
       );
@@ -81,7 +70,6 @@
           focusableElements[focusableElements.length - 1];
       }
 
-      // Trap focus в открытом мобильном меню
       this.mobileMenu.addEventListener("keydown", (e) => {
         if (!this.isMenuOpen) return;
 
@@ -110,52 +98,40 @@
     }
 
     openMobileMenu() {
-      // Обновляем состояние
       this.isMenuOpen = true;
 
-      // Обновляем классы
       this.navbar.classList.add("menu-open");
       this.mobileMenu.classList.add("active");
       this.mobileToggle.classList.add("active");
 
-      // Обновляем ARIA атрибуты
       this.mobileToggle.setAttribute("aria-expanded", "true");
       this.mobileMenu.setAttribute("aria-hidden", "false");
 
-      // Блокируем скролл страницы
       document.body.style.overflow = "hidden";
 
-      // Фокусируемся на первом элементе меню для accessibility
       setTimeout(() => {
         if (this.firstFocusableElement) {
           this.firstFocusableElement.focus();
         }
       }, 100);
 
-      // Анимация иконки гамбургера
       this.animateHamburgerIcon(true);
     }
 
     closeMobileMenu() {
-      // Обновляем состояние
       this.isMenuOpen = false;
 
-      // Обновляем классы
       this.navbar.classList.remove("menu-open");
       this.mobileMenu.classList.remove("active");
       this.mobileToggle.classList.remove("active");
 
-      // Обновляем ARIA атрибуты
       this.mobileToggle.setAttribute("aria-expanded", "false");
       this.mobileMenu.setAttribute("aria-hidden", "true");
 
-      // Восстанавливаем скролл страницы
       document.body.style.overflow = "";
 
-      // Возвращаем фокус на кнопку toggle
       this.mobileToggle.focus();
 
-      // Анимация иконки гамбургера
       this.animateHamburgerIcon(false);
     }
 
@@ -176,13 +152,11 @@
     }
 
     handleResize() {
-      // Закрываем мобильное меню при переходе на desktop
       if (window.innerWidth > 600 && this.isMenuOpen) {
         this.closeMobileMenu();
       }
     }
 
-    // Публичные методы для внешнего использования
     open() {
       this.openMobileMenu();
     }
@@ -200,17 +174,14 @@
     }
   }
 
-  // Инициализация при загрузке DOM
   document.addEventListener("DOMContentLoaded", () => {
     window.modernNavbar = new ModernNavbar();
   });
 
-  // Экспорт для модульных систем (если нужно)
   if (typeof module !== "undefined" && module.exports) {
     module.exports = ModernNavbar;
   }
 
-  // Добавляем к глобальному объекту если он существует
   if (typeof window.NeutysApp !== "undefined") {
     window.NeutysApp.navbar = window.modernNavbar;
   }

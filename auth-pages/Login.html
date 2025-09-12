@@ -5,43 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Neutys</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cygre:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Common CSS -->
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     
-    <!-- Navbar Component -->
     <link rel="stylesheet" href="css/navbar.css">
     
-    <!-- Login specific styles -->
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <!-- Background layer: color + SVG objects -->
     <div class="bg-objects"></div>
 
-    <!-- Main container -->
     <div class="login-container">
         
-        <!-- 1. Navigation Bar -->
         <nav class="navbar">
             
-            <!-- Верхние углы навбара (через ::before и ::after) -->
-            
-            <!-- Контент навбара -->
             <div class="navbar-content">
                 
-                <!-- Left: Logo -->
                 <div class="navbar__left">
                     <img src="images/logo1.svg" alt="Neutys" class="logo logo--desktop">
                     <img src="images/logo2.svg" alt="Neutys" class="logo logo--mobile">
                 </div>
                 
-                <!-- Center: Navigation Menu -->
                 <div class="navbar__center">
                     <a href="#" class="nav-link">Home</a>
                     <a href="#" class="nav-link">Investors</a>
@@ -54,9 +42,7 @@
                     <a href="#" class="nav-link">Contact</a>
                 </div>
                 
-                <!-- Right: Buttons -->
                 <div class="navbar__right">
-                    <!-- Mobile menu toggle -->
                     <div class="mobile-menu-toggle-corners">
                         <button class="mobile-menu-toggle" aria-label="Toggle menu">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -67,7 +53,6 @@
                         </button>
                     </div>
                     
-                    <!-- Desktop buttons -->
                     <div class="btn-login-corners">
                         <button class="btn-login">Log In</button>
                     </div>
@@ -77,11 +62,9 @@
                 </div>
             </div>
             
-            <!-- Нижние углы навбара - отдельные элементы -->
             <div class="navbar-corner navbar-corner--bottom-left"></div>
             <div class="navbar-corner navbar-corner--bottom-right"></div>
             
-            <!-- Mobile Menu -->
             <div class="mobile-menu">
                 <div class="mobile-nav-links">
                     <a href="#" class="nav-link">Home</a>
@@ -106,96 +89,26 @@
             </div>
         </nav>
 
-        <!-- 2. Main Content Area -->
         <main class="main-content">
             
-            <!-- Left Block: Graphics/Charts -->
             <div class="graphics-block">
                 <div class="graphics-container">
-                    <!-- Chart/Dashboard elements -->
-                    <div class="main-chart">
-                        <div class="chart-inner">
-                            <div class="percentage">78%</div>
-                            <div class="chart-labels">
-                                <div class="label-item">
-                                    <div class="label-value">$12.5k</div>
-                                    <div class="label-text">Revenue</div>
-                                </div>
-                                <div class="label-item">
-                                    <div class="label-value">250</div>
-                                    <div class="label-text">Users</div>
-                                </div>
-                            </div>
-                            <div class="chart-subtitle">Performance Overview</div>
-                        </div>
-                    </div>
-                    
-                    <!-- USD/BTC Card -->
-                    <div class="usd-btc-card">
-                        <span class="currency-icon">$</span>
-                        <span class="currency-text">USD/BTC</span>
-                    </div>
-                    
-                    <!-- Bar Chart Card -->
-                    <div class="bar-chart-card">
-                        <div class="chart-bars">
-                            <div class="bar bar-1"></div>
-                            <div class="bar bar-2"></div>
-                            <div class="bar bar-3"></div>
-                            <div class="bar bar-4"></div>
-                            <div class="bar bar-5"></div>
-                            <div class="bar bar-6"></div>
-                        </div>
-                        <div class="chart-status">
-                            <span class="status-icon">●</span>
-                            <span>Active</span>
-                        </div>
-                        <div class="chart-period">
-                            <span>Jan</span>
-                            <span>Dec</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Line Chart Card -->
-                    <div class="line-chart-card">
-                        <div class="line-chart-content">
-                            <div class="chart-value">$45.2K</div>
-                            <div class="chart-change">+12.5%</div>
-                            <div class="chart-dates">
-                                <span>Jan</span>
-                                <span>Dec</span>
-                            </div>
-                        </div>
-                        <svg class="line-chart-svg" viewBox="0 0 100 30">
-                            <path d="M 0,25 Q 25,10 50,15 T 100,5" stroke="#6366f1" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-                    
-                    <!-- Decorative Dots -->
-                    <div class="decorative-dots">
-                        <div class="dot dot-1"></div>
-                        <div class="dot dot-2"></div>
-                        <div class="dot dot-3"></div>
-                        <div class="dot dot-4"></div>
-                        <div class="dot dot-5"></div>
-                    </div>
+                    <div class="card-image main-chart-card"></div>
+                    <div class="card-image circular-chart-card"></div>
+                    <div class="card-image bar-chart-card"></div>
                 </div>
             </div>
 
-            <!-- Right Block: Login Form -->
             <div class="login-block">
                 <div class="login-form-container">
                     
-                    <!-- Login Header -->
                     <div class="login-header">
                         <h1 class="login-title">Welcome Back</h1>
                         <p class="login-subtitle">Please login your account</p>
                     </div>
 
-                    <!-- Login Form -->
                     <form class="login-form">
                         
-                        <!-- Email Field -->
                         <div class="form-group">
                             <label class="form-label" for="email">Email</label>
                             <input 
@@ -208,7 +121,6 @@
                             >
                         </div>
 
-                        <!-- Password Field -->
                         <div class="form-group">
                             <label class="form-label" for="password">Password</label>
                             <input 
@@ -221,7 +133,6 @@
                             >
                         </div>
 
-                        <!-- Verification Field -->
                         <div class="form-group">
                             <label class="form-label" for="verification">Verification</label>
                             <div class="verification-input">
@@ -238,21 +149,18 @@
                             <a href="#" class="forgot-password">Forgot Password?</a>
                         </div>
 
-                        <!-- Sign In Button -->
                         <button type="submit" class="signin-btn">
                             Sign In
                         </button>
                         
                     </form>
 
-                    <!-- Divider -->
                     <div class="or-divider">
                         <div class="line"></div>
                         <div class="or-text">OR</div>
                         <div class="line"></div>
                     </div>
 
-                    <!-- Social Login -->
                     <div class="social-login">
                         <button class="google-btn">
                             <svg class="google-icon" viewBox="0 0 24 24">
@@ -265,7 +173,6 @@
                         </button>
                     </div>
 
-                    <!-- Sign Up Link -->
                     <div class="signup-link">
                         Didn't have an Account? <a href="#signup">Sign-up</a>
                     </div>
@@ -275,7 +182,6 @@
             
         </main>
 
-        <!-- 3. Footer -->
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
@@ -291,7 +197,6 @@
         
     </div>
 
-    <!-- JavaScript -->
     <script src="js/login.js"></script>
 </body>
 </html>

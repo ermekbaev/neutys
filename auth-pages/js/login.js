@@ -1,15 +1,12 @@
-// Login page JavaScript functionality
 (function () {
   "use strict";
 
-  // DOM элементы
   let navbar = null;
   let mobileToggle = null;
   let mobileMenu = null;
   let loginForm = null;
   let isMenuOpen = false;
 
-  // Инициализация при загрузке DOM
   document.addEventListener("DOMContentLoaded", function () {
     initializeElements();
     setupEventListeners();
@@ -19,7 +16,6 @@
     console.log("Login page initialized");
   });
 
-  // Инициализация элементов
   function initializeElements() {
     navbar = document.querySelector(".navbar");
     mobileToggle = document.querySelector(".mobile-menu-toggle");
@@ -31,40 +27,33 @@
     }
   }
 
-  // Установка обработчиков событий
   function setupEventListeners() {
-    // Мобильное меню
     if (mobileToggle) {
       mobileToggle.addEventListener("click", toggleMobileMenu);
     }
 
-    // Закрытие меню при клике вне его
     document.addEventListener("click", function (e) {
       if (isMenuOpen && !navbar.contains(e.target)) {
         closeMobileMenu();
       }
     });
 
-    // Обработка клавиатуры
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && isMenuOpen) {
         closeMobileMenu();
       }
     });
 
-    // Закрытие меню при изменении размера окна
     window.addEventListener("resize", function () {
       if (window.innerWidth > 600 && isMenuOpen) {
         closeMobileMenu();
       }
     });
 
-    // Обработчики ссылок в мобильном меню
     if (mobileMenu) {
       const mobileLinks = mobileMenu.querySelectorAll(".nav-link");
       mobileLinks.forEach((link) => {
         link.addEventListener("click", function () {
-          // Закрываем меню при переходе по ссылке на мобильных
           if (window.innerWidth <= 600) {
             closeMobileMenu();
           }
@@ -72,7 +61,6 @@
       });
     }
 
-    // Обработчики кнопок в мобильном меню
     const mobileButtons = document.querySelectorAll(
       ".mobile-auth-buttons button"
     );
@@ -83,7 +71,6 @@
     });
   }
 
-  // Переключение мобильного меню
   function toggleMobileMenu() {
     if (isMenuOpen) {
       closeMobileMenu();
@@ -92,7 +79,6 @@
     }
   }
 
-  // Открытие мобильного меню
   function openMobileMenu() {
     if (!navbar || !mobileMenu || !mobileToggle) return;
 
@@ -100,22 +86,18 @@
     mobileMenu.classList.add("mobile-menu--open");
     mobileToggle.classList.add("active");
 
-    // Блокируем скролл страницы
     document.body.style.overflow = "hidden";
 
     isMenuOpen = true;
 
-    // Фокус на первую ссылку для доступности
     const firstLink = mobileMenu.querySelector(".nav-link");
     if (firstLink) {
       firstLink.focus();
     }
 
-    // Анимация иконки гамбургера
     animateHamburgerIcon(true);
   }
 
-  // Закрытие мобильного меню
   function closeMobileMenu() {
     if (!navbar || !mobileMenu || !mobileToggle) return;
 
@@ -123,19 +105,15 @@
     mobileMenu.classList.remove("mobile-menu--open");
     mobileToggle.classList.remove("active");
 
-    // Восстанавливаем скролл страницы
     document.body.style.overflow = "";
 
     isMenuOpen = false;
 
-    // Анимация иконки гамбургера
     animateHamburgerIcon(false);
 
-    // Возвращаем фокус на кнопку меню
     mobileToggle.focus();
   }
 
-  // Анимация иконки гамбургера
   function animateHamburgerIcon(isOpen) {
     const lines = mobileToggle.querySelectorAll("svg line");
 
@@ -152,7 +130,6 @@
     }
   }
 
-  // Валидация формы
   function setupFormValidation() {
     if (!loginForm) return;
 
@@ -161,7 +138,6 @@
     const verificationInput = loginForm.querySelector("#verification");
     const submitButton = loginForm.querySelector(".signin-btn");
 
-    // Обработка отправки формы
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -170,7 +146,6 @@
       }
     });
 
-    // Валидация в реальном времени
     if (emailInput) {
       emailInput.addEventListener("blur", function () {
         validateEmail(this);
@@ -190,7 +165,6 @@
     }
   }
 
-  // Валидация формы
   function validateForm() {
     const emailInput = loginForm.querySelector("#email");
     const passwordInput = loginForm.querySelector("#password");
@@ -213,7 +187,6 @@
     return isValid;
   }
 
-  // Валидация email
   function validateEmail(input) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailRegex.test(input.value);
@@ -222,7 +195,6 @@
     return isValid;
   }
 
-  // Валидация пароля
   function validatePassword(input) {
     const isValid = input.value.length >= 6;
 
@@ -234,7 +206,6 @@
     return isValid;
   }
 
-  // Валидация проверочного кода
   function validateVerification(input) {
     const isValid = input.value.trim() !== "";
 
@@ -242,7 +213,6 @@
     return isValid;
   }
 
-  // Показать/скрыть ошибку поля
   function toggleInputError(input, hasError, message) {
     const formGroup = input.closest(".form-group");
     let errorElement = formGroup.querySelector(".error-message");
@@ -266,33 +236,25 @@
     }
   }
 
-  // Обработка отправки формы
   function handleFormSubmit() {
     const submitButton = loginForm.querySelector(".signin-btn");
     const originalText = submitButton.textContent;
 
-    // Показываем индикатор загрузки
     submitButton.disabled = true;
     submitButton.textContent = "Signing In...";
 
-    // Симуляция отправки данных
     setTimeout(function () {
-      // Здесь должна быть реальная отправка данных на сервер
       console.log("Form submitted successfully");
 
-      // Восстанавливаем кнопку
       submitButton.disabled = false;
       submitButton.textContent = originalText;
 
-      // Показываем уведомление об успехе
       showNotification("Login successful!", "success");
 
-      // Здесь можно добавить редирект
       // window.location.href = '/dashboard';
     }, 2000);
   }
 
-  // Показать уведомление
   function showNotification(message, type = "info") {
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
@@ -303,7 +265,6 @@
             </div>
         `;
 
-    // Стили для уведомления
     Object.assign(notification.style, {
       position: "fixed",
       top: "20px",
@@ -323,24 +284,20 @@
 
     document.body.appendChild(notification);
 
-    // Анимация появления
     setTimeout(() => {
       notification.style.transform = "translateX(0)";
     }, 100);
 
-    // Обработчик закрытия
     const closeButton = notification.querySelector(".notification-close");
     closeButton.addEventListener("click", () => {
       removeNotification(notification);
     });
 
-    // Автоматическое удаление через 5 секунд
     setTimeout(() => {
       removeNotification(notification);
     }, 5000);
   }
 
-  // Удаление уведомления
   function removeNotification(notification) {
     notification.style.transform = "translateX(400px)";
     setTimeout(() => {
@@ -350,9 +307,7 @@
     }, 300);
   }
 
-  // Настройка доступности
   function setupAccessibility() {
-    // Добавляем ARIA атрибуты для мобильного меню
     if (mobileToggle) {
       mobileToggle.setAttribute("aria-expanded", "false");
       mobileToggle.setAttribute("aria-controls", "mobile-menu");
@@ -363,7 +318,6 @@
       mobileMenu.setAttribute("aria-hidden", "true");
     }
 
-    // Обновляем ARIA атрибуты при открытии/закрытии меню
     const originalOpenMenu = openMobileMenu;
     const originalCloseMenu = closeMobileMenu;
 
@@ -379,7 +333,6 @@
       if (mobileMenu) mobileMenu.setAttribute("aria-hidden", "true");
     };
 
-    // Управление фокусом в мобильном меню
     if (mobileMenu) {
       const focusableElements = mobileMenu.querySelectorAll("a, button");
 
@@ -400,7 +353,6 @@
     }
   }
 
-  // Google авторизация (заглушка)
   document.addEventListener("DOMContentLoaded", function () {
     const googleBtn = document.querySelector(".google-btn");
     if (googleBtn) {
@@ -410,7 +362,6 @@
     }
   });
 
-  // Обработка "Forgot Password"
   document.addEventListener("DOMContentLoaded", function () {
     const forgotPasswordLink = document.querySelector(".forgot-password");
     if (forgotPasswordLink) {
@@ -424,7 +375,6 @@
     }
   });
 
-  // Экспорт для использования в других скриптах
   window.LoginPage = {
     toggleMobileMenu,
     showNotification,

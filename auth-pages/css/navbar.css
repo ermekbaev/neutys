@@ -1,12 +1,7 @@
-/* ==================================================
-   NAVBAR COMPONENT - ОЧИЩЕННАЯ ВЕРСИЯ
-   ================================================== */
-
-/* ===== БАЗОВЫЕ СТИЛИ НАВБАРА ===== */
 .navbar {
   position: relative;
   margin: 15px auto 0 auto;
-  width: 100%;
+  width: 85%;
   z-index: 100;
 }
 
@@ -29,7 +24,6 @@
 
 /* ===== УГЛОВЫЕ ЭЛЕМЕНТЫ НАВБАРА ===== */
 
-/* Верхние углы */
 .navbar-content::before,
 .navbar-content::after {
   content: "";
@@ -55,7 +49,6 @@
   border-bottom: none;
 }
 
-/* Нижние углы */
 .navbar-corner {
   position: absolute;
   width: 15px;
@@ -192,7 +185,6 @@
 
 /* ===== УГЛОВЫЕ ЭЛЕМЕНТЫ КНОПОК ===== */
 
-/* Верхние углы кнопок */
 .btn-login::before,
 .btn-login::after,
 .btn-signup::before,
@@ -222,7 +214,6 @@
   border-bottom: none;
 }
 
-/* Нижние углы кнопок */
 .btn-login-corners,
 .btn-signup-corners {
   position: relative;
@@ -281,7 +272,6 @@
   stroke: currentColor;
 }
 
-/* Верхние углы мобильной кнопки */
 .mobile-menu-toggle::before,
 .mobile-menu-toggle::after {
   content: "";
@@ -307,7 +297,6 @@
   border-bottom: none;
 }
 
-/* Нижние углы мобильной кнопки */
 .mobile-menu-toggle-corners {
   position: relative;
   display: none;
@@ -342,20 +331,19 @@
 .mobile-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 0px);
   left: 0;
   right: 0;
   background: linear-gradient(
     135deg,
-    rgba(61, 115, 235, 0.95),
-    rgba(222, 143, 255, 0.95)
+    rgba(61, 115, 235, 0.3),
+    rgba(222, 143, 255, 0.3)
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 16px;
   z-index: 50;
-  opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
@@ -424,7 +412,6 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Анимация гамбургера */
 .mobile-menu-toggle.active svg line:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
   transition: transform 0.3s ease;
@@ -481,7 +468,6 @@
   }
 }
 
-/* КЛЮЧЕВОЙ БРЕЙКПОИНТ: 1000px - смена логотипа + кнопки в колонку */
 @media (max-width: 1000px) {
   .navbar {
     width: 98%;
@@ -494,14 +480,12 @@
     gap: 16px;
   }
 
-  /* КНОПКИ В КОЛОНКУ */
   .navbar__right {
     flex-direction: column;
     align-items: flex-end;
     gap: 6px;
   }
 
-  /* СМЕНА ЛОГОТИПА */
   .logo--desktop {
     display: none;
   }
@@ -512,7 +496,6 @@
     max-width: 140px;
   }
 
-  /* Уменьшение углов */
   .navbar-content::before,
   .navbar-content::after,
   .navbar-corner {
@@ -539,14 +522,12 @@
   }
 }
 
-/* МОБИЛЬНОЕ МЕНЮ: 950px */
 @media (max-width: 950px) {
   .navbar-content {
     padding: 12px 16px;
     min-height: 50px;
   }
 
-  /* Скрываем меню и кнопки */
   .navbar__center {
     display: none !important;
   }
@@ -555,7 +536,6 @@
     display: none !important;
   }
 
-  /* Показываем бургер */
   .mobile-menu-toggle-corners {
     display: block !important;
   }
@@ -563,7 +543,6 @@
     display: flex !important;
   }
 
-  /* Углы */
   .navbar-content::before,
   .navbar-content::after,
   .navbar-corner {
@@ -655,7 +634,6 @@
   }
 }
 
-/* ===== ЭФФЕКТЫ ===== */
 .btn-login:hover::before,
 .btn-login:hover::after,
 .btn-signup:hover::before,
