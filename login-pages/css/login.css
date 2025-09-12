@@ -1,7 +1,13 @@
+/* ==================================================
+   LOGIN PAGE STYLES - без стилей навбара
+   ================================================== */
+
+/* Переменные для шрифта */
 :root {
   --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Background */
 body {
   background-color: #e0e3f2;
   min-height: 100vh;
@@ -11,6 +17,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Background SVG objects */
 .bg-objects {
   position: fixed;
   top: 0;
@@ -25,6 +32,7 @@ body {
   pointer-events: none;
 }
 
+/* Main container with side margins */
 .login-container {
   position: relative;
   z-index: 1;
@@ -35,342 +43,7 @@ body {
   margin-right: 180px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  margin: 15px auto 0 auto;
-  justify-content: space-between;
-  position: relative;
-
-  background: linear-gradient(
-    135deg,
-    rgba(61, 115, 235, 0.3),
-    rgba(222, 143, 255, 0.3)
-  );
-  backdrop-filter: blur(20px);
-  padding: 12px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 80%;
-}
-
-.navbar::before,
-.navbar::after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #000000;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.navbar::before {
-  top: -2px;
-  left: -2px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.navbar::after {
-  top: -2px;
-  right: -2px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.navbar .navbar__left::before {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #000000;
-  border-right: none;
-  border-top: none;
-  bottom: -14px;
-  left: -34px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.navbar .navbar__right::after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #000000;
-  border-left: none;
-  border-top: none;
-  bottom: -14px;
-  right: -34px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.navbar__left {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.logo-text {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.navbar__center {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-
-.nav-link {
-  color: #6b7280;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  position: relative;
-}
-
-.nav-link--active {
-  color: #1f2937;
-  font-weight: 600;
-}
-
-.nav-link:hover {
-  color: #1f2937;
-}
-
-.navbar__right {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  position: relative;
-}
-
-.btn-login {
-  background: transparent;
-  border: 1px solid #e5e7eb;
-  color: #6b7280;
-  padding: 8px 16px;
-  border-radius: 0;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.btn-login:hover {
-  background: rgba(255, 255, 255, 0.5);
-  color: #1f2937;
-}
-
-.btn-login::before,
-.btn-login::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #000000;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.btn-login::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.btn-login::after {
-  top: -1px;
-  right: -1px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.btn-login-corners {
-  position: relative;
-  display: inline-block;
-}
-
-.btn-login-corners::before,
-.btn-login-corners::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #000000;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.btn-login-corners::before {
-  bottom: -1px;
-  left: -1px;
-  border-right: none;
-  border-top: none;
-}
-
-.btn-login-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
-}
-
-.btn-login:hover::before,
-.btn-login:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-.btn-login-corners:hover::before,
-.btn-login-corners:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-.btn-signup {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 0;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.btn-signup:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-}
-
-.btn-signup::before,
-.btn-signup::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #000000;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.btn-signup::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.btn-signup::after {
-  top: -1px;
-  right: -1px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.btn-signup-corners {
-  position: relative;
-  display: inline-block;
-}
-
-.btn-signup-corners::before,
-.btn-signup-corners::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid #000000;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Левый нижний угол */
-.btn-signup-corners::before {
-  bottom: -1px;
-  left: -1px;
-  border-right: none;
-  border-top: none;
-}
-
-/* Правый нижний угол */
-.btn-signup-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Hover эффекты */
-.btn-signup:hover::before,
-.btn-signup:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-.btn-signup-corners:hover::before,
-.btn-signup-corners:hover::after {
-  border-color: #333333;
-  transition: border-color 0.2s ease;
-}
-
-@media (max-width: 1200px) {
-  .btn-signup::before,
-  .btn-signup::after,
-  .btn-signup-corners::before,
-  .btn-signup-corners::after {
-    width: 6px;
-    height: 6px;
-  }
-}
-
-@media (max-width: 968px) {
-  .btn-signup::before,
-  .btn-signup::after,
-  .btn-signup-corners::before,
-  .btn-signup-corners::after {
-    width: 5px;
-    height: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .btn-signup::before,
-  .btn-signup::after,
-  .btn-signup-corners::before,
-  .btn-signup-corners::after {
-    width: 4px;
-    height: 4px;
-    border-width: 1px;
-  }
-}
+/* ===== MAIN CONTENT ===== */
 
 /* Main Content */
 .main-content {
@@ -641,6 +314,8 @@ body {
   left: 160px;
 }
 
+/* ===== LOGIN FORM BLOCK ===== */
+
 /* Right Block: Login Form */
 .login-block {
   flex: 0 0 380px;
@@ -840,7 +515,7 @@ body {
   text-decoration: underline;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 .footer {
   padding: 20px 0;
   margin-top: auto;
@@ -873,7 +548,9 @@ body {
   color: #1f2937;
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Экраны до 1600px */
 @media (max-width: 1600px) {
   .login-container {
     margin-left: 120px;
@@ -881,6 +558,7 @@ body {
   }
 }
 
+/* Экраны до 1200px */
 @media (max-width: 1200px) {
   .login-container {
     margin-left: 80px;
@@ -909,26 +587,9 @@ body {
   .percentage {
     font-size: 36px;
   }
-
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
-    width: 12px;
-    height: 12px;
-  }
-
-  .navbar .navbar__left::before {
-    bottom: -12px;
-    left: -32px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -12px;
-    right: -32px;
-  }
 }
 
+/* Планшеты - до 968px */
 @media (max-width: 968px) {
   .login-container {
     margin-left: 40px;
@@ -949,38 +610,13 @@ body {
     order: 1;
     flex: none;
   }
-
-  .navbar__center {
-    display: none;
-  }
-
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
-    width: 10px;
-    height: 10px;
-  }
-
-  .navbar .navbar__left::before {
-    bottom: -11px;
-    left: -26px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -11px;
-    right: -26px;
-  }
 }
 
+/* Мобильные - до 480px */
 @media (max-width: 480px) {
   .login-container {
     margin-left: 20px;
     margin-right: 20px;
-  }
-
-  .navbar {
-    padding: 12px 20px;
   }
 
   .login-form-container {
@@ -1010,24 +646,5 @@ body {
     flex-direction: column;
     gap: 12px;
     text-align: center;
-  }
-
-  .navbar::before,
-  .navbar::after,
-  .navbar .navbar__left::before,
-  .navbar .navbar__right::after {
-    width: 8px;
-    height: 8px;
-    border-width: 1px;
-  }
-
-  .navbar .navbar__left::before {
-    bottom: -9px;
-    left: -22px;
-  }
-
-  .navbar .navbar__right::after {
-    bottom: -9px;
-    right: -22px;
   }
 }
