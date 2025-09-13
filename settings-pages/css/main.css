@@ -401,6 +401,85 @@
   margin: 0 auto var(--spacing-lg);
 }
 
+/* 2FA специфичные стили */
+.tfa-status-info {
+  display: none;
+}
+
+.disabled_span {
+  color: #ff6961;
+}
+
+.enabled_span {
+  color: #00c287;
+}
+
+.section-title p {
+  color: var(--text-secondary3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge--disabled {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.status-badge--enabled {
+  background: #f0fdf4;
+  color: #10b981;
+}
+
+.status-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.tfa-state--hidden {
+  display: block;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: #999aa1;
+}
+
+.or-text {
+  margin: 0 15px;
+  color: #8b949e;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.qr-code-block {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.qr-code {
+  width: 99px;
+  height: 99px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .top-section {
